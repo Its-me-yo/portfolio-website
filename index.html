@@ -78,6 +78,55 @@ border-radius:20px;
 
 /* CONTACT */
 .contact a{color:#00f5c4;text-decoration:none;}
+  /* Fade-in animation for sections */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Enhance card hover effect */
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 245, 196, 0.3);
+}
+ /* Dark/Light theme */
+body.light {
+  background: #f5f5f5;
+  color: #111;
+}
+
+body.light header {
+  background: #fff;
+}
+
+body.light .card {
+  background: #e0e0e0;
+  color: #111;
+}
+
+body.light nav a {
+  color: #111;
+}
+
+body.light nav a:hover {
+  color: #00f5c4;
+}
+
+/* Toggle button */
+#theme-toggle {
+  background: none;
+  border: 2px solid #00f5c4;
+  color: #00f5c4;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
 footer{text-align:center;padding:20px;color:#666;}
 </style>
@@ -94,6 +143,8 @@ footer{text-align:center;padding:20px;color:#666;}
 <a href="#skills">Skills</a>
 <a href="#contact">Contact</a>
 </nav>
+ <!-- Dark/Light Mode Toggle Button -->
+<button id="theme-toggle">🌙</button>
 </header>
 
 <!-- HERO -->
@@ -110,7 +161,7 @@ footer{text-align:center;padding:20px;color:#666;}
 </section>
 
 <!-- ABOUT -->
-<section id="about">
+<section id="about" class="fade-in">
 <h2>About Me</h2>
 <div class="card">
 <p>B.Tech Computer Science student passionate about full stack development, networking, and real-time systems. I enjoy solving real-world problems and participating in hackathons.</p>
@@ -118,7 +169,7 @@ footer{text-align:center;padding:20px;color:#666;}
 </section>
 
 <!-- PROJECTS -->
-<section id="projects">
+<section id="projects" class="fade-in">
 <h2>Projects</h2>
 <div class="grid">
 
@@ -144,7 +195,7 @@ footer{text-align:center;padding:20px;color:#666;}
 </section>
 
 <!-- EXPERIENCE -->
-<section id="experience">
+<section id="experience" class="fade-in">
 <h2>Experience</h2>
 
 <div class="card">
@@ -165,7 +216,7 @@ footer{text-align:center;padding:20px;color:#666;}
 </section>
 
 <!-- SKILLS -->
-<section id="skills">
+<section id="skills" class="fade-in">
 <h2>Skills</h2>
 <div class="skills">
 <span>Java</span><span>JavaScript</span><span>React</span>
@@ -191,6 +242,36 @@ footer{text-align:center;padding:20px;color:#666;}
 <footer>
 <p>© 2026 Mr XYZ</p>
 </footer>
+<script>
+// Fade-in sections
+const faders = document.querySelectorAll('.fade-in');
+const appearOptions = { threshold: 0.1 };
+const appearOnScroll = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    entry.target.classList.add('visible');
+    observer.unobserve(entry.target);
+  });
+}, appearOptions);
+faders.forEach(fader => appearOnScroll.observe(fader));
 
+// Dark/Light theme toggle
+const toggle = document.getElementById('theme-toggle');
+// Load saved theme
+if (localStorage.getItem('theme') === 'light') {
+  document.body.classList.add('light');
+  toggle.textContent = '🌞';
+}
+toggle.addEventListener('click', () => {
+  document.body.classList.toggle('light');
+  if (document.body.classList.contains('light')) {
+    localStorage.setItem('theme', 'light');
+    toggle.textContent = '🌞';
+  } else {
+    localStorage.setItem('theme', 'dark');
+    toggle.textContent = '🌙';
+  }
+});
+</script>
 </body>
 </html>
