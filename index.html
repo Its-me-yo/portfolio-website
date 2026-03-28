@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mr XYZ | Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:#0b0f19;color:#fff;scroll-behavior:smooth;}
+section{padding:80px 10%;}
+
+/* NAV */
+header{
+position:fixed;width:100%;top:0;
+display:flex;justify-content:space-between;
+padding:20px 10%;
+background:#0b0f19;
+z-index:1000;
+}
+nav a{color:#aaa;margin-left:20px;text-decoration:none;}
+nav a:hover{color:#00f5c4;}
+
+/* HERO */
+.hero{
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
+
+.hero-text h1{font-size:3rem;}
+.hero-text span{color:#00f5c4;}
+.hero-text p{margin:20px 0;color:#aaa;}
+
+.hero-img{
+width:300px;height:300px;
+background:#111;
+border-radius:50%;
+display:flex;align-items:center;justify-content:center;
+}
+.hero-img::after{
+content:"Profile Image";
+color:#666;
+}
+
+/* GRID */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+/* CARD */
+.card{
+background:#111827;
+padding:20px;
+border-radius:10px;
+transition:0.3s;
+}
+.card:hover{transform:translateY(-5px);}
+
+/* TITLES */
+h2{margin-bottom:30px;color:#00f5c4;}
+
+/* SKILLS */
+.skills span{
+display:inline-block;
+padding:10px;
+margin:5px;
+background:#111827;
+border-radius:20px;
+}
+
+/* CONTACT */
+.contact a{color:#00f5c4;text-decoration:none;}
+
+footer{text-align:center;padding:20px;color:#666;}
+</style>
+</head>
+
+<body>
+
+<header>
+<h2>Mr XYZ</h2>
+<nav>
+<a href="#about">About</a>
+<a href="#projects">Projects</a>
+<a href="#experience">Experience</a>
+<a href="#skills">Skills</a>
+<a href="#contact">Contact</a>
+</nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+<div class="hero-text">
+<h1>Hi, I'm <span>Mr XYZ</span></h1>
+<p>Full Stack Developer | Networking Enthusiast</p>
+<p>I build scalable web apps and solve real-world problems using modern technologies.</p>
+</div>
+
+<div class="hero-img"></div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+<h2>About Me</h2>
+<div class="card">
+<p>B.Tech Computer Science student passionate about full stack development, networking, and real-time systems. I enjoy solving real-world problems and participating in hackathons.</p>
+</div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+<h2>Projects</h2>
+<div class="grid">
+
+<div class="card">
+<h3>BlogZip App</h3>
+<p>Real-time blogging platform with secure backend.</p>
+<small>React | Redux | Appwrite</small>
+</div>
+
+<div class="card">
+<h3>VibeChat</h3>
+<p>Real-time chat app with file sharing & typing indicators.</p>
+<small>Node.js | Socket.io</small>
+</div>
+
+<div class="card">
+<h3>RentRoverHub</h3>
+<p>Property platform with map-based search.</p>
+<small>React | MongoDB</small>
+</div>
+
+</div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+<h2>Experience</h2>
+
+<div class="card">
+<h3>Cisco Intern</h3>
+<p>Improved network efficiency by 15%, reduced downtime by 20%.</p>
+</div>
+
+<div class="card">
+<h3>Zidio Intern</h3>
+<p>Optimized performance and reduced API calls by 23%.</p>
+</div>
+
+<div class="card">
+<h3>Internsavy</h3>
+<p>Developed UI and improved accessibility.</p>
+</div>
+
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+<h2>Skills</h2>
+<div class="skills">
+<span>Java</span><span>JavaScript</span><span>React</span>
+<span>Node.js</span><span>Express</span><span>Redux</span>
+<span>MySQL</span><span>Tailwind</span><span>Git</span>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+<h2>Contact</h2>
+<div class="card contact">
+<p>Email: example@email.com</p>
+<p>Phone: 0000000000</p>
+<p>
+<a href="#">LinkedIn</a> |
+<a href="#">GitHub</a> |
+<a href="#">LeetCode</a>
+</p>
+</div>
+</section>
+
+<footer>
+<p>© 2026 Mr XYZ</p>
+</footer>
+
+</body>
+</html>
