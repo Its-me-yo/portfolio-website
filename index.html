@@ -141,12 +141,39 @@ body.light nav a:hover {
 .skills i {
   font-size: 20px;            /* Icon size */
 }
+ /* Aurora Cursor Effect */
+#aurora{
+  position: fixed;
+  width: 500px;
+  height: 500px;
+
+  background:
+    radial-gradient(circle,
+      rgba(0,245,196,0.35) 0%,
+      rgba(0,153,255,0.25) 40%,
+      rgba(153,0,255,0.20) 70%,
+      transparent 100%
+    );
+
+  border-radius: 50%;
+
+  filter: blur(120px);
+
+  pointer-events: none;
+
+  z-index: -1;
+
+  transform: translate(-50%, -50%);
+
+  transition: transform 0.08s linear;
+}
 
 footer{text-align:center;padding:20px;color:#666;}
 </style>
 </head>
 
 <body>
+ <div id="aurora"></div>
 
 <header>
 <h2>Mr XYZ</h2>
@@ -274,7 +301,30 @@ const appearOnScroll = new IntersectionObserver((entries, observer) => {
   });
 }, appearOptions);
 faders.forEach(fader => appearOnScroll.observe(fader));
+const aurora = document.getElementById('aurora');
 
+let mouseX = window.innerWidth / 2;
+let mouseY = window.innerHeight / 2;
+
+let currentX = mouseX;
+let currentY = mouseY;
+
+document.addEventListener('mousemove', (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+});
+
+function animateAurora() {
+  currentX += (mouseX - currentX) * 0.08;
+  currentY += (mouseY - currentY) * 0.08;
+
+  aurora.style.left = currentX + 'px';
+  aurora.style.top = currentY + 'px';
+
+  requestAnimationFrame(animateAurora);
+}
+
+animateAurora();
 // Dark/Light theme toggle
 const toggle = document.getElementById('theme-toggle');
 // Load saved theme
